@@ -1,4 +1,4 @@
-chat
+//chat
 
 var express = require('express');
 var app = express();
