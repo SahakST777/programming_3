@@ -1,4 +1,4 @@
-//chat
+// //chat
 
 var express = require('express');
 var app = express();
@@ -18,7 +18,10 @@ io.on('connection', function (socket) {
     }
     socket.on("send message", function (data) {
         messages.push(data);
+        let arr = Array();
+        arr.push(messages);
+        console.log(arr);
         io.sockets.emit("display message", data);
+       
     });
  });
- 

@@ -88,3 +88,43 @@ socket.on('display message', handleMessage);
 } // main closing bracket
 
 window.onload = main;   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let value = "green";
+// function draw() {
+//   fill(value);
+//   ellipse(mouseX, mouseY, 5, 5);
+// }
+// function mouseDragged() {
+  
+// }
+// var clickCount = 0;
+// function clickHandler(evt){
+//   value = "red";
+// }
+
+// var p = document.getElementById("pElement");
+// p.addEventListener("click", clickHandler);
+
