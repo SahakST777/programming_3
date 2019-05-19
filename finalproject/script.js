@@ -2,11 +2,14 @@ function setup() {
     var socket = io();
     var side = 30;
     var matrix = [];
+
     //! Getting DOM objects (HTML elements)
     let grassCount = document.getElementById('grassCount');
     let grassEaterCount = document.getElementById('grassEaterCount');
     let RedeatCount = document.getElementById('RedeatCount');
-
+    let CreatGrassCount = document.getElementById('CreatGrassCount');
+    let ChessCount = document.getElementById('ChessCount');
+    
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
     socket.on("data", drawCreatures);
 
