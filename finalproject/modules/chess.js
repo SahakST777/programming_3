@@ -93,6 +93,7 @@ module.exports = class Chess extends LiveForm{
 		this.multiply++;
 		var newCell = random(this.chooseCell(0));
 		if (this.multiply >= 3 && newCell) {
+			Chesshashiv++;
 			var newGrass = new Chess(newCell[0], newCell[1]);
 			chessArr.push(newGrass);
 			matrix[newCell[1]][newCell[0]] = 5;

@@ -29,6 +29,7 @@ module.exports = class GrassEater extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
+            GrassEaterhashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 2;
@@ -60,6 +61,7 @@ module.exports = class GrassEater extends LiveForm {
 
             if (this.life >= 13) {
                 this.mul();
+
             }
         }
         else {

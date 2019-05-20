@@ -6,6 +6,12 @@ redArr = [];
 creatArr = [];
 chessArr = [];
 matrix = [];
+Grasshashiv = 0;
+GrassEaterhashiv = 0;
+RedEaterhashiv = 0;
+CreatGrasshashiv = 0;
+Chesshashiv = 0;
+
 
 //! Setting global arrays  -- END
 
@@ -46,7 +52,7 @@ function matrixGenerator(matrixSize, grass, grassEater, eatred, createater, ches
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(10, 5, 5, 3,4,1);
+matrixGenerator(10, 5, 9, 3,4,1);
 //! Creating MATRIX -- END
 
 
@@ -84,22 +90,30 @@ function creatingObjects() {
             if (matrix[y][x] == 2) {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
+                GrassEaterhashiv++;
+
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
+                Grasshashiv++;
+
 
             }
             else if (matrix[y][x] == 3) {
                 var eatred = new Eatred(x, y);
                 redArr.push(eatred);
+                RedEaterhashiv++;
             }
             else if (matrix[y][x] == 4){
                 var aq = new Creatgrass(x,y);
                 creatArr.push(aq);
+                CreatGrasshashiv++;
             }
             else if (matrix[y][x] == 5){
                 var ew = new Chess(x,y);
                 chessArr.push(ew);
+                Chesshashiv++;
+
             }
         }
     }
@@ -132,9 +146,11 @@ function game() {
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassArr: Grass,
-        grassEaterArr: GrassEater
-
+        GrassCount: Grasshashiv,
+        grassEaterCount: GrassEaterhashiv,
+        RedEaterCount: RedEaterhashiv,
+        CreatGrassCount: CreatGrasshashiv,
+        ChessCount: Chesshashiv,
     }
 
     //! Send data over the socket to clients who listens "data"

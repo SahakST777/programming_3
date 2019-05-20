@@ -81,6 +81,7 @@ module.exports = class Creatgrass extends LiveForm {
 		var newCell = random(this.chooseCell(0));
 		console.log(newCell, this.multiply);
 		if (this.multiply >= 2 && newCell) {
+			CreatGrasshashiv++;
 			var newGras = new Creatgrass(newCell[0], newCell[1]);
 			creatArr.push(newGras);
 			matrix[newCell[1]][newCell[0]] = 4;

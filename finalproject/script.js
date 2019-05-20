@@ -4,9 +4,9 @@ function setup() {
     var matrix = [];
 
     //! Getting DOM objects (HTML elements)
-    let grassCount = document.getElementById('grassCount');
+    let grassCount = document.getElementById("grassCount");
     let grassEaterCount = document.getElementById('grassEaterCount');
-    let RedeatCount = document.getElementById('RedeatCount');
+    let RedEaterCount = document.getElementById('RedEaterCount');
     let CreatGrassCount = document.getElementById('CreatGrassCount');
     let ChessCount = document.getElementById('ChessCount');
     
@@ -16,6 +16,13 @@ function setup() {
     function drawCreatures(data) {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
+        // console.log(grassCount);
+       
+        grassCount.innerText = data.GrassCount;
+        grassEaterCount.innerText = data.grassEaterCount;
+        RedEaterCount.innerText = data.RedEaterCount;
+        CreatGrassCount.innerText = data.CreatGrassCount;
+        ChessCount.innerText = data.ChessCount;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color

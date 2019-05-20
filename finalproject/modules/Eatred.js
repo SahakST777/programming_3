@@ -76,6 +76,7 @@ module.exports = class Eatred extends LiveForm {
 		var newCell = random(this.chooseCell(0));
 		console.log(newCell, this.multiply);
 		if (this.multiply >= 3 && newCell) {
+			RedEaterhashiv++;
 			var newGras = new Eatred(newCell[0], newCell[1]);
 			redArr.push(newGras);
 			matrix[newCell[1]][newCell[0]] = 3;
