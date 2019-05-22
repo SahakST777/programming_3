@@ -1,8 +1,8 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
-module.exports = class Chess extends LiveForm{
+module.exports = class Chess extends LiveForm {
 	constructor(x, y) {
-		super(x,y);
+		super(x, y);
 		this.multiply = 0;
 		this.energy = 20;
 		this.directions = [];
@@ -20,8 +20,8 @@ module.exports = class Chess extends LiveForm{
 		];
 	}
 	chooseCell(t) {
-        this.getNewDirections();
-        return super.chooseCell(t);
+		this.getNewDirections();
+		return super.chooseCell(t);
 	}
 	move() {
 		var fundCords = this.chooseCell(0);
@@ -37,55 +37,58 @@ module.exports = class Chess extends LiveForm{
 		}
 	}
 	eat() {
-		var fundCords_0 = this.chooseCell(1);
-		var fundCords_1 = this.chooseCell(2);
-		var fundCords_2 = this.chooseCell(3);
-		var fundCords_3 = this.chooseCell(4);
-		var fundCords = fundCords_0.concat(fundCords_1, fundCords_2, fundCords_3);
-		var cord = random(fundCords);
+		if (Grasshashiv < 700 || Grasshashiv > 2000) {
 
-		if (cord) {
-			var x = cord[0];
-			var y = cord[1];
-			matrix[y][x] = 5;
-			matrix[this.y][this.x] = 0;
+			var fundCords_0 = this.chooseCell(1);
+			var fundCords_1 = this.chooseCell(2);
+			var fundCords_2 = this.chooseCell(3);
+			var fundCords_3 = this.chooseCell(4);
+			var fundCords = fundCords_0.concat(fundCords_1, fundCords_2, fundCords_3);
+			var cord = random(fundCords);
 
-			this.x = x;
-			this.y = y;
+			if (cord) {
+				var x = cord[0];
+				var y = cord[1];
+				matrix[y][x] = 5;
+				matrix[this.y][this.x] = 0;
 
-			this.multiply++;
-			this.energy++;
+				this.x = x;
+				this.y = y;
 
-			for (var i in grassArr) {
-				if (x == grassArr[i].x && y == grassArr[i].y) {
-					grassArr.splice(i, 1);
+				this.multiply++;
+				this.energy++;
+
+				for (var i in grassArr) {
+					if (x == grassArr[i].x && y == grassArr[i].y) {
+						grassArr.splice(i, 1);
+					}
+				}
+				for (var i in grassEaterArr) {
+					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						grassEaterArr.splice(i, 1);
+					}
+				}
+				for (var i in redArr) {
+					if (x == redArr[i].x && y == redArr[i].y) {
+						redArr.splice(i, 1);
+					}
+				}
+				for (var i in creatArr) {
+					if (x == creatArr[i].x && y == creatArr[i].y) {
+						creatArr.splice(i, 1);
+					}
+				}
+				if (this.multiply > 25) {
+					this.mul()
+					this.multiply = 0;
 				}
 			}
-			for (var i in grassEaterArr) {
-				if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
-					grassEaterArr.splice(i, 1);
+			else {
+				this.move();
+				this.energy--;
+				if (this.energy < 0) {
+					this.die();
 				}
-			}
-			for (var i in redArr) {
-				if (x == redArr[i].x && y == redArr[i].y) {
-					redArr.splice(i, 1);
-				}
-			}
-			for (var i in creatArr) {
-				if (x == creatArr[i].x && y == creatArr[i].y) {
-					creatArr.splice(i, 1);
-				}
-			}
-			if (this.multiply > 25) {
-				this.mul()
-				this.multiply = 0;
-			}
-		}
-		else {
-			this.move();
-			this.energy--;
-			if (this.energy < 0) {
-				this.die();
 			}
 		}
 	}

@@ -1,8 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
 
-
-
 module.exports = class GrassEater extends LiveForm {
     constructor(x, y) {
         super(x, y);
@@ -23,7 +21,7 @@ module.exports = class GrassEater extends LiveForm {
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);
-    } 
+    }
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
@@ -41,7 +39,12 @@ module.exports = class GrassEater extends LiveForm {
     eat() {
         let emptyCells = this.chooseCell(1);
         let newCell = random(emptyCells);
-
+        if (Grasshashiv > 700 && Grasshashiv < 2000) {
+            this.life = 5;
+        }
+        else if (Grasshashiv < 700 || Grasshashiv > 2000) {
+            this.life++;
+        }
         if (newCell) {
 
             this.life++;
@@ -59,9 +62,8 @@ module.exports = class GrassEater extends LiveForm {
             this.x = x;
             this.y = y;
 
-            if (this.life >= 13) {
+            if (this.life >= 18) {
                 this.mul();
-
             }
         }
         else {

@@ -1,5 +1,3 @@
-
-//! Setting global arrays  --  START
 grassArr = [];
 grassEaterArr = [];
 redArr = [];
@@ -12,12 +10,6 @@ RedEaterhashiv = 0;
 CreatGrasshashiv = 0;
 Chesshashiv = 0;
 
-
-//! Setting global arrays  -- END
-
-
-
-//! Creating MATRIX -- START
 let random = require('./modules/random');
 function matrixGenerator(matrixSize, grass, grassEater, eatred, createater, chessrr) {
     for (let i = 0; i < matrixSize; i++) {
@@ -52,25 +44,22 @@ function matrixGenerator(matrixSize, grass, grassEater, eatred, createater, ches
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(10, 5, 9, 3,4,1);
-//! Creating MATRIX -- END
-
-
+matrixGenerator(40, 20, 40, 50,40,3);
 
 //! Requiring modules  --  START
+
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
 var Eatred = require("./modules/Eatred.js");
 var Creatgrass = require("./modules/Creatgrass.js");
 var Chess = require("./modules/Chess.js");
 
-
-
 //! Requiring modules  --  END
 
 
 
 //! SERVER STUFF  --  START
+
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -80,9 +69,8 @@ app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 server.listen(3000);
+
 //! SERVER STUFF END  --  END
-
-
 
 function creatingObjects() {
     for (var y = 0; y < matrix.length; y++) {
@@ -91,13 +79,11 @@ function creatingObjects() {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
                 GrassEaterhashiv++;
-
-            } else if (matrix[y][x] == 1) {
+            } 
+            else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
                 Grasshashiv++;
-
-
             }
             else if (matrix[y][x] == 3) {
                 var eatred = new Eatred(x, y);
@@ -113,27 +99,19 @@ function creatingObjects() {
                 var ew = new Chess(x,y);
                 chessArr.push(ew);
                 Chesshashiv++;
-
             }
         }
     }
 }
 creatingObjects();
 
-
-
 function game() {
-        for (var i in grassArr) {
-            grassArr[i].mul();
-           
-        }
-    
-    
-        for (var i in grassEaterArr) {
-            grassEaterArr[i].eat();
-        }
-    
-    
+    for (var i in grassArr) {
+        grassArr[i].mul();  
+    }
+     for (var i in grassEaterArr) {
+        grassEaterArr[i].eat();
+    }
     for (var i in redArr) {
         redArr[i].eat();
     }
@@ -143,7 +121,7 @@ function game() {
     for (var i in chessArr) {
         chessArr[i].eat();
     }
-    //! Object to send
+
     let sendData = {
         matrix: matrix,
         GrassCount: Grasshashiv,
@@ -153,11 +131,6 @@ function game() {
         ChessCount: Chesshashiv,
     }
 
-    //! Send data over the socket to clients who listens "data"
-    io.sockets.emit("data", sendData);
-    
+    io.sockets.emit("data", sendData); 
 }
-
-
-
 setInterval(game, 1000)
