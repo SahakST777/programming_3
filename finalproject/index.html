@@ -6,7 +6,9 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    
+    @IMPORT
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Press+Start+2P|Shojumaru&display=swap"
+        rel="stylesheet">
     <style>
         canvas {
             display: block;
@@ -25,8 +27,18 @@
         body {
             font-family: 'Noto Sans', sans-serif !important;
         }
+
+        #weather {
+            padding: 15px;
+            background-color: lawngreen;
+            font-family: 'Fredericka the Great', cursive;
+            font-family: 'Press Start 2P', cursive;
+            font-family: 'Shojumaru', cursive;
+            font-size: 40px;
+            text-align: center;
+        }
     </style>
-    
+
 </head>
 
 <body>
@@ -40,6 +52,7 @@
             </tr>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">կերպարներ</th>
                 <th scope="col">Գույն</th>
                 <th scope="col">Նկարագրություն</th>
                 <th scope="col">Ծնվել է</th>
@@ -48,43 +61,53 @@
         <tbody>
             <tr>
                 <th scope="row">1</th>
+                <td>խոտ</td>
                 <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td>Կանաչը խոտն է, որը բազմանում է 4 ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ ձմռանը
+                    գիշատիչը:
+                </td>
                 <td id="grassCount"></td>
             </tr>
             <tr>
                 <th scope="row">2</th>
+                <td>խոտակեր</td>
                 <td scope="row" style="background-color:orange;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>Դեղինը խոտակերն է, որը բազմանում է 10 հատ խոտ ուտելուց հետո և մահանում է երբ էներգիան 0 է, կամ
+                    երբ նրան ուտում է գիշատիչը: ձմռանը չի բազմանում և պայքարում է գոյատևման համար:</td>
                 <td id="grassEaterCount"></td>
             </tr>
 
 
             <tr>
                 <th scope="row">3</th>
+                <td>գիշատիչ</td>
                 <td scope="row" style="background-color:red;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>կարմիրը ուտում է խոտակերներին և բազմանու է երբ ուտում է 2-ից ավել խոտակեր: ձմռանը կարող է ուտել նաև
+                    խոտ:</td>
                 <td id="RedEaterCount"></td>
             </tr>
             <tr>
                 <th scope="row">4</th>
+                <td>օգնական</td>
                 <td scope="row" style="background-color:blue;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>ուտում է գիշատչին, բազմանում է 3-ից ավել գիշատիչ ուտելուց հետո: ձմռանը բազմանու է 1-ից ավելի գիշատիչ
+                    ուտելուց, ուտում է նաև ձիուն:</td>
                 <td id="CreatGrassCount"></td>
             </tr>
             <tr>
                 <th scope="row">5</th>
+                <td>ձի</td>
                 <td scope="row" style="background-color:yellow;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>ուտում է բոլորին բազմանու է 25-ից ավել ուտելուց: ձմռանը սառում է և չի շարժվում, կարող է ընդունել
+                    տարբեր գույներ:</td>
                 <td id="ChessCount"></td>
             </tr>
+
+
+
         </tbody>
     </table>
+    <p id="weather"></p>
     <script src="script.js"></script>
 </body>
 
