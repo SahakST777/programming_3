@@ -4,7 +4,7 @@ var random = require("./random.js");
 module.exports = class Creatgrass extends LiveForm {
 	constructor(x, y) {
 		super(x, y);
-		this.energy = 30;
+		this.energy = 15;
 		this.multiply = 0;
 		this.directions = [];
 	}
@@ -46,9 +46,7 @@ module.exports = class Creatgrass extends LiveForm {
 			if (cord) {
 				var x = cord[0];
 				var y = cord[1];
-				if (this.multiply >= 1) {
-					matrix[y][x] = 3;
-				}
+				matrix[y][x] = 4;
 				matrix[this.y][this.x] = 0;
 
 				this.x = x;
@@ -59,16 +57,19 @@ module.exports = class Creatgrass extends LiveForm {
 
 				for (var i in redArr) {
 					if (x == redArr[i].x && y == redArr[i].y) {
+						RedEaterhashivDie++;
 						redArr.splice(i, 1);
 					}
 				}
 				for (var i in grassEaterArr) {
 					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						GrassEaterhashivDie++;
 						grassEaterArr.splice(i, 1);
 					}
 				}
 				for (var i in chessArr) {
 					if (x == chessArr[i].x && y == chessArr[i].y) {
+						ChesshashivDie++;
 						chessArr.splice(i, 1);
 					}
 				}
@@ -95,10 +96,9 @@ module.exports = class Creatgrass extends LiveForm {
 
 			if (cord) {
 				var x = cord[0];
-				var y = cord[1];
-				if (this.multiply >= 1) {
-					matrix[y][x] = 3;
-				}
+				var y = cord[1];		
+				matrix[y][x] = 4;
+		
 				matrix[this.y][this.x] = 0;
 
 				this.x = x;
@@ -109,11 +109,13 @@ module.exports = class Creatgrass extends LiveForm {
 
 				for (var i in redArr) {
 					if (x == redArr[i].x && y == redArr[i].y) {
+						RedEaterhashivDie++;
 						redArr.splice(i, 1);
 					}
 				}
 				for (var i in grassEaterArr) {
 					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						GrassEaterhashivDie++;
 						grassEaterArr.splice(i, 1);
 					}
 				}
@@ -147,6 +149,7 @@ module.exports = class Creatgrass extends LiveForm {
 		matrix[this.y][this.x] = 0;
 		for (var i in creatArr) {
 			if (this.x == creatArr[i].x && this.y == creatArr[i].y) {
+				CreatGrasshashivDie++;
 				creatArr.splice(i, 1);
 			}
 		}

@@ -4,11 +4,24 @@ redArr = [];
 creatArr = [];
 chessArr = [];
 matrix = [];
+// born
 Grasshashiv = 0;
 GrassEaterhashiv = 0;
 RedEaterhashiv = 0;
 CreatGrasshashiv = 0;
 Chesshashiv = 0;
+//born%
+
+//die
+GrasshashivDie = 0;
+GrassEaterhashivDie = 0;
+RedEaterhashivDie = 0;
+CreatGrasshashivDie = 0;
+ChesshashivDie = 0;
+//die%
+
+
+
 
 let random = require('./modules/random');
 function matrixGenerator(matrixSize, grass, grassEater, eatred, createater, chessrr) {
@@ -44,7 +57,7 @@ function matrixGenerator(matrixSize, grass, grassEater, eatred, createater, ches
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(40, 20, 40, 50,40,3);
+matrixGenerator(40, 20, 40, 50,40,5);
 
 //! Requiring modules  --  START
 
@@ -124,13 +137,21 @@ function game() {
 
     let sendData = {
         matrix: matrix,
+        
+        // born
         GrassCount: Grasshashiv,
         grassEaterCount: GrassEaterhashiv,
         RedEaterCount: RedEaterhashiv,
         CreatGrassCount: CreatGrasshashiv,
         ChessCount: Chesshashiv,
+        //die
+        GrassCountDie: GrasshashivDie,
+        grassEaterCountDie: GrassEaterhashivDie,
+        RedEaterCountDie: RedEaterhashivDie,
+        CreatGrassCountDie: CreatGrasshashivDie,
+        ChessCountDie: ChesshashivDie,
     }
 
     io.sockets.emit("data", sendData); 
 }
-setInterval(game, 1000)
+setInterval(game, 500)

@@ -57,11 +57,13 @@ module.exports = class Eatred extends LiveForm {
 				this.energy++;
 				for (var i in grassArr) {
 					if (x == grassArr[i].x && y == grassArr[i].y) {
+						GrasshashivDie++;
 						grassArr.splice(i, 1);
 					}
 				}
 				for (var i in grassEaterArr) {
 					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						GrassEaterhashivDie++;
 						grassEaterArr.splice(i, 1);
 					}
 				}
@@ -85,6 +87,7 @@ module.exports = class Eatred extends LiveForm {
 
 				for (var i in grassEaterArr) {
 					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						GrassEaterhashivDie++;
 						grassEaterArr.splice(i, 1);
 					}
 				}
@@ -135,6 +138,7 @@ module.exports = class Eatred extends LiveForm {
 		matrix[this.y][this.x] = 0;
 		for (var i in redArr) {
 			if (this.x == redArr[i].x && this.y == redArr[i].y) {
+				RedEaterhashivDie++;
 				redArr.splice(i, 1);
 			}
 		}

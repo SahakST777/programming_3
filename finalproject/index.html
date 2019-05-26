@@ -6,7 +6,6 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    @IMPORT
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Press+Start+2P|Shojumaru&display=swap"
         rel="stylesheet">
     <style>
@@ -49,13 +48,19 @@
             </tr>
             <tr>
                 <h1>Անուն Ազգանուն</h1>
+
             </tr>
+            <button type="button" onclick="randColor()">Set random background color</button>       
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">կերպարներ</th>
                 <th scope="col">Գույն</th>
                 <th scope="col">Նկարագրություն</th>
                 <th scope="col">Ծնվել է</th>
+                <th scope="col">Ծնվել %</th>
+                <th scope="col">մահացել է</th>
+                <th scope="col">մահացել %</th>
+
             </tr>
         </thead>
         <tbody>
@@ -67,6 +72,10 @@
                     գիշատիչը:
                 </td>
                 <td id="grassCount"></td>
+                <td id="grassCountTokos"></td>
+                <td id="grassCountDie"></td>
+                <td id="grassCountDieTokos"></td>
+
             </tr>
             <tr>
                 <th scope="row">2</th>
@@ -75,6 +84,9 @@
                 <td>Դեղինը խոտակերն է, որը բազմանում է 10 հատ խոտ ուտելուց հետո և մահանում է երբ էներգիան 0 է, կամ
                     երբ նրան ուտում է գիշատիչը: ձմռանը չի բազմանում և պայքարում է գոյատևման համար:</td>
                 <td id="grassEaterCount"></td>
+                <td id="grassEaterCountTokos"></td>
+                <td id="grassEaterCountDie"></td>
+                <td id="grassEaterCountDieTokos"></td>
             </tr>
 
 
@@ -85,6 +97,11 @@
                 <td>կարմիրը ուտում է խոտակերներին և բազմանու է երբ ուտում է 2-ից ավել խոտակեր: ձմռանը կարող է ուտել նաև
                     խոտ:</td>
                 <td id="RedEaterCount"></td>
+                <td id="RedEaterCountTokos"></td>
+                <td id="RedEaterCountDie"></td>
+                <td id="RedEaterCountDieTokos"></td>
+
+
             </tr>
             <tr>
                 <th scope="row">4</th>
@@ -93,6 +110,11 @@
                 <td>ուտում է գիշատչին, բազմանում է 3-ից ավել գիշատիչ ուտելուց հետո: ձմռանը բազմանու է 1-ից ավելի գիշատիչ
                     ուտելուց, ուտում է նաև ձիուն:</td>
                 <td id="CreatGrassCount"></td>
+                <td id="CreatGrassCountTokos"></td>
+                <td id="CreatGrassCountDie"></td>
+                <td id="CreatGrassCountDieTokos"></td>
+
+
             </tr>
             <tr>
                 <th scope="row">5</th>
@@ -101,12 +123,19 @@
                 <td>ուտում է բոլորին բազմանու է 25-ից ավել ուտելուց: ձմռանը սառում է և չի շարժվում, կարող է ընդունել
                     տարբեր գույներ:</td>
                 <td id="ChessCount"></td>
+                <td id="ChessCountTokos"></td>
+
+                <td id="ChessCountDie"></td>
+                <td id="ChessCountDieTokos"></td>
+
+
             </tr>
 
 
 
         </tbody>
     </table>
+    
     <p id="weather"></p>
     <script src="script.js"></script>
 </body>

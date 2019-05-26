@@ -4,7 +4,7 @@ module.exports = class Chess extends LiveForm {
 	constructor(x, y) {
 		super(x, y);
 		this.multiply = 0;
-		this.energy = 20;
+		this.energy = 4;
 		this.directions = [];
 	}
 	getNewDirections() {
@@ -60,21 +60,25 @@ module.exports = class Chess extends LiveForm {
 
 				for (var i in grassArr) {
 					if (x == grassArr[i].x && y == grassArr[i].y) {
+						GrasshashivDie++;
 						grassArr.splice(i, 1);
 					}
 				}
 				for (var i in grassEaterArr) {
 					if (x == grassEaterArr[i].x && y == grassEaterArr[i].y) {
+						GrassEaterhashivDie++;
 						grassEaterArr.splice(i, 1);
 					}
 				}
 				for (var i in redArr) {
 					if (x == redArr[i].x && y == redArr[i].y) {
+						RedEaterhashivDie++;
 						redArr.splice(i, 1);
 					}
 				}
 				for (var i in creatArr) {
 					if (x == creatArr[i].x && y == creatArr[i].y) {
+						CreatGrasshashivDie++;
 						creatArr.splice(i, 1);
 					}
 				}
@@ -107,6 +111,7 @@ module.exports = class Chess extends LiveForm {
 		matrix[this.y][this.x] = 0;
 		for (var i in chessArr) {
 			if (this.x == chessArr[i].x && this.y == chessArr[i].y) {
+				ChesshashivDie++;
 				chessArr.splice(i, 1);
 			}
 		}
